@@ -80,11 +80,7 @@ jobs:
               \"echo Logged in to AWS ECR\",
               \"docker pull '"$image"'\",
               \"echo Pulled latest Docker image\",
-              \"docker run -d -p 3000:3000 -e DB_HOST=${{secrets.DB_HOST}}
-              -e DB_USERNAME=${{secrets.DB_USERNAME}}
-              -e DB_PASSWORD=${{secrets.DB_PASSWORD}}
-              -e ENVIRONMENT=production
-               --name api '"$image"' \",
+              \"docker run -d -p 3000:3000 -e DB_HOST=${{secrets.DB_HOST}} -e DB_USERNAME=${{secrets.DB_USERNAME}} -e DB_PASSWORD=${{secrets.DB_PASSWORD}} -e ENVIRONMENT=production --name api '"$image"'\",
               \"echo Started new container\"
             ]}" --query "Command.CommandId" --output text)
 
