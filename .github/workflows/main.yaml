@@ -2,7 +2,7 @@
 name: Deploy
 on:
   push:
-    branches: ["main"]
+    branches: ["database"]
 
 jobs:
   build-and-push-to-ecr:
