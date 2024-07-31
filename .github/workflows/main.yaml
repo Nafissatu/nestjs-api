@@ -78,6 +78,7 @@ jobs:
             --parameters "{\"commands\": [
               \"aws ecr get-login-password --region ${{ secrets.AWS_REGION }} | docker login --username AWS --password-stdin $ecr_registry \",
               \"echo Logged in to AWS ECR\",
+              \"Docker stop api || true\",
               \"docker pull '"$image"'\",
               \"echo Pulled latest Docker image\",
               \"docker run -d -p 3000:3000 -e DB_HOST=${{secrets.DB_HOST}} -e DB_USERNAME=${{secrets.DB_USERNAME}} -e DB_PASSWORD=${{secrets.DB_PASSWORD}} -e ENVIRONMENT=production --name api '"$image"'\",
